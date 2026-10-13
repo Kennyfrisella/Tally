@@ -119,14 +119,23 @@ Collision uses a simple axis-aligned box + tunnel-cylinder model (no physics eng
 
 ## 11. Milestones
 
-1. **M1 — Skeleton:** Vite/TS project, renderer, quality presets, procedural textures, player controller. ✅ target
-2. **M2 — World:** valley terrain, portal, tunnel with lights, gallery, cross-passages, vehicles.
-3. **M3 — Platoon:** soldier meshes, 5 Gruppen, selection, orders, formations, tactical map.
-4. **M4 — Combat:** Stgw 90, enemies, civilians, ROE, damage.
-5. **M5 — RPG layer:** briefing → measures → decision → order → play → debriefing; morale; scoring.
-6. **M6 — Polish:** HUD, audio, post FX, performance pass.
+| | Milestone | Status |
+|---|---|---|
+| M1 | Skeleton: Vite/TS project, renderer, quality presets, procedural textures, player controller | ✅ |
+| M2 | World: valley terrain, portal, tunnel with baked lighting, gallery, cross-passages, vent room, vehicles | ✅ |
+| M3 | Platoon: soldier meshes (1 skinned draw call each), 5 Gruppen, selection, orders, formations, tactical map | ✅ |
+| M4 | Combat: Stgw 90, saboteurs with cover/surrender AI, civilians, ROE, damage, casualty care | ✅ |
+| M5 | RPG layer: briefing → measures → decision → order → play → AAR; morale; scoring; career | ✅ |
+| M6 | Polish: HUD, synthesized audio, bloom, performance pass | ✅ first pass |
 
-This first delivery implements M1–M6 at "vertical slice" quality: one complete, playable mission.
+**Verification so far:** typecheck and production build pass. In headless Chromium (software GL) the full flow runs
+without errors: menu, briefing, play, SITREP, debrief. A scripted 5-minute AI simulation showed contact reports,
+challenges, surrenders, arrests, casualties, medic treatment, evacuation and the charge timer all working. Outdoors
+the scene costs ~230–340 draw calls including shadow and bloom passes, and inside the tunnel ~110–170.
+Frame rate has **not** been measured on real GPU hardware yet.
+
+**Next steps:** profile on target laptops (Iris Xe), tune difficulty with real cadres, add voice lines, add more
+missions (e.g. the south portal at Airolo, or a night scenario).
 
 ## 12. Out of scope (for now)
 
